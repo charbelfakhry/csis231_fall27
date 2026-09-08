@@ -36,6 +36,7 @@
             text="Clear"
             onAction="#handleClear"
         />
+
     </HBox>
 
     <!-- Message -->
