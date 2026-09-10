@@ -31,6 +31,12 @@ public class LoginController {
     }
 
     @FXML
+    private void handleRegister() throws IOException
+    {
+        SceneManager.switchScene("registration-view.fxml");
+    }
+
+    @FXML
     private void handleClear(){
         usernameField.clear();
         passwordField.clear();

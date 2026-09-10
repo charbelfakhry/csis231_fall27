@@ -3,6 +3,7 @@ package org.example.csis231_fall27_2;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class RegistrationController {
@@ -36,6 +37,11 @@ public class RegistrationController {
     @FXML
     private Label messageLabel;
 
+    @FXML
+    private void handleLogin() throws IOException
+    {
+        SceneManager.switchScene("login-view.fxml");
+    }
     @FXML
     private void handleRegistration(){
         String firstName = firstNameField.getText().trim();

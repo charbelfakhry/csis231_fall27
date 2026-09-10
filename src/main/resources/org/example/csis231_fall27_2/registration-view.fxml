@@ -75,6 +75,7 @@
                 text="Register"
                 onAction="#handleRegistration"
         />
+        <Button text="Login" onAction="#handleLogin" />
     </HBox>
 
     <!-- Message -->
