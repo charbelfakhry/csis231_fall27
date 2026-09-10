@@ -1,0 +1,9 @@
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<VBox prefWidth="500" prefHeight="350" alignment="CENTER">
+    <Label text="Student 1" />
+    <Label text="Student 1" />
+    <Label text="Student 1" />
+    <Label text="Student 1" />
+    <Label text="Student 1" />
+</VBox>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<BorderPane prefWidth="700" prefHeight="450" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.csis231_fall27_2.HomeController">
+    <top>
+        <HBox alignment="CENTER" spacing="20">
+            <Label text="CSIS 231" />
+            <Button text="Logout" onAction="#handleLogout" />
+        </HBox>
+    </top>
+    <center>
+        <VBox alignment="CENTER" spacing="20">
+            <Label text="Welcome to Home Page" />
+            <Button text="Students" onAction="#handleStudents" />
+            <Button text="Courses" onAction="#handleCourses" />
+            <Button text="Reports" onAction="#handleReports" />
+        </VBox>
+    </center>
+</BorderPane>
