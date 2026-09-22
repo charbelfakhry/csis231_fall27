@@ -39,4 +39,12 @@ public class StudentMapper {
         );
     }
 
+    public void updateEntity(Student student, StudentRequest request, Department department) {
+        student.setFirstName(request.firstName());
+        student.setLastName(request.lastName());
+        student.setEmail(request.email());
+        student.setPhone(request.phone());
+        student.setDateOfBirth(request.dateOfBirth());
+        student.setDepartment(department);
+    }
 }
