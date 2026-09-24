@@ -40,6 +40,7 @@ public class StudentMapper {
     }
 
     public void updateEntity(Student student, StudentRequest request, Department department) {
+        student.setStudentNumber(request.studentNumber());
         student.setFirstName(request.firstName());
         student.setLastName(request.lastName());
         student.setEmail(request.email());

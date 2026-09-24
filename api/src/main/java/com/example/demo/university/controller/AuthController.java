@@ -4,6 +4,7 @@ import com.example.demo.university.dto.LoginRequest;
 import com.example.demo.university.dto.LoginResponse;
 import com.example.demo.university.service.AuthService;
 import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +18,7 @@ public class AuthController {
         this.authService = authService;
     }
 
-    @RequestMapping("/login")
+    @PostMapping("/login")
     public LoginResponse login(
             @Valid
             @RequestBody
@@ -25,4 +26,3 @@ public class AuthController {
         return authService.login(request);
     }
 }
-

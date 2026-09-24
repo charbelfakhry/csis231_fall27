@@ -34,12 +34,12 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public StudentResponse getById(Long id){
+    public StudentResponse getById(@PathVariable Long id){
         return studentService.findById(id);
     }
 
     @PutMapping("/{id}")
-    public StudentResponse update(Long id,
+    public StudentResponse update(@PathVariable Long id,
                                   @Valid
                                   @RequestBody
                                   StudentRequest request){
@@ -48,7 +48,7 @@ public class StudentController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(Long id){
+    public void delete(@PathVariable Long id){
         studentService.delete(id);
     }
 

@@ -26,7 +26,6 @@ public class LoginController {
             SceneManager.switchScene("home-view.fxml");
         }else{
             messageLabel.setText("Invalid username or password!");
-            SceneManager.switchScene("registration-view.fxml");
         }
     }
 

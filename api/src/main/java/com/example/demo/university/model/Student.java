@@ -32,6 +32,7 @@ public class Student {
 
     private LocalDate enrollmentDate = LocalDate.now();
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private StudentStatus status = StudentStatus.ACTIVE;
 

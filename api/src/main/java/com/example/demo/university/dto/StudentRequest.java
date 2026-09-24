@@ -2,6 +2,7 @@ package com.example.demo.university.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
@@ -16,7 +17,7 @@ public record StudentRequest(
         String email,
         String phone,
         LocalDate dateOfBirth,
-        @NotBlank
+        @NotNull
         Long departmentId
 ) {
 }

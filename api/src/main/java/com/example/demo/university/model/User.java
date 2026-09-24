@@ -23,6 +23,7 @@ public class User {
     private String firstName;
     private String lastName;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role = Role.USER;
 

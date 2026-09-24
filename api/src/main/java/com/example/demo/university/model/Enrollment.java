@@ -9,14 +9,14 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "enrollments",
-uniqueConstraints = {
-    @UniqueConstraint(
-            columnNames =
-                    {"student_id", "course_id", "semster", "academic_year"}
-    )})
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        columnNames =
+                                {"student_id", "course_id", "semester", "academic_year"}
+                )})
 @Getter
 @Setter
-public class Enrollement {
+public class Enrollment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -32,7 +32,7 @@ public class Enrollement {
     private LocalDate enrollmentDate = LocalDate.now();
 
     @Column(nullable = false)
-    private String semster;
+    private String semester;
 
     @Column(nullable = false)
     private String academicYear;
@@ -40,6 +40,7 @@ public class Enrollement {
     @Column(precision = 5, scale = 2)
     private BigDecimal grade;
 
+    @Enumerated(EnumType.STRING)
     private EnrollmentStatus status = EnrollmentStatus.ENROLLED;
 
 }

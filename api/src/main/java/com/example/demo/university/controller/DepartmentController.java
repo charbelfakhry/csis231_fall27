@@ -34,13 +34,13 @@ public class DepartmentController {
     }
 
     @GetMapping("/{id}")
-    public DepartmentResponse findById(Long id){
+    public DepartmentResponse findById(@PathVariable Long id){
         return departmentService.findById(id);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(Long id){
+    public void delete(@PathVariable Long id){
         departmentService.delete(id);
     }
 }
