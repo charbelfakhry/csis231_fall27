@@ -52,6 +52,15 @@ public class DepartmentService {
         repository.delete(department);
     }
 
+    public DepartmentResponse update(Long id, DepartmentRequest request){
+
+        Department department = findEntity(id);
+        department.setName(request.name());
+        department.setDescription(request.description());
+        return mapper.toResponse(repository.save(department));
+
+    }
+
     /**
      * Helpers
      * @param id
