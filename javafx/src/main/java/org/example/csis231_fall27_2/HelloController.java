@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import org.example.csis231_fall27_2.api.LoginResponse;
 
 public class HelloController {
 
@@ -20,4 +21,6 @@ public class HelloController {
             msgTxt.setText("Have a safe trip.");
         }
     }
+
+
 }

@@ -1,9 +1,12 @@
 package org.example.csis231_fall27_2;
 
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import org.example.csis231_fall27_2.api.ApiClient;
+import org.example.csis231_fall27_2.api.LoginResponse;
 
 import java.io.IOException;
 
@@ -22,11 +25,36 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        if(username.equals("admin") && password.equals("1234")){
-            SceneManager.switchScene("home-view.fxml");
-        }else{
-            messageLabel.setText("Invalid username or password!");
+        if(username.isEmpty() || password.isEmpty()){
+            messageLabel.setText("Please fill in all the fields!");
+            return;
         }
+
+        messageLabel.setText("Logging in...");
+
+        // call the api in the background. prevent UI freezing.
+        Task<LoginResponse> task = new Task<LoginResponse>() {
+            @Override
+            protected LoginResponse call() throws Exception {
+                return ApiClient.login(username, password);
+            }
+        };
+
+        task.setOnSucceeded(e -> {
+            Session.setCurrentUser(task.getValue());
+            try {
+                SceneManager.switchScene("home-view.fxml");
+            } catch (IOException ex) {
+                messageLabel.setText("Could not open HomePage!");
+            }
+        });
+
+        task.setOnFailed(e -> {
+            messageLabel.setText(task.getException().getMessage());
+            new Thread(task).start();
+        });
+
+
     }
 
     @FXML
