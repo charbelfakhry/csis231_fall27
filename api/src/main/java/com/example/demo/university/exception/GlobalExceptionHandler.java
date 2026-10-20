@@ -14,6 +14,12 @@ public class GlobalExceptionHandler {
         return ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage());
     }
 
+    // e.g. registering with a username that is already taken
+    @ExceptionHandler(ConflictException.class)
+    public ProblemDetail handleDuplicate(ConflictException ex) {
+        return ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, ex.getMessage());
+    }
+
     // Unique constraint (e.g. duplicate department name / student email)
     // or foreign key violation (e.g. deleting a department that still has students)
     @ExceptionHandler(DataIntegrityViolationException.class)

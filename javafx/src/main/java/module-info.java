@@ -9,5 +9,7 @@ module org.example.csis231_fall27_2 {
     requires com.fasterxml.jackson.datatype.jsr310;
 
     opens org.example.csis231_fall27_2 to javafx.fxml;
+    // let Jackson read/create the request & response records
+    opens org.example.csis231_fall27_2.api to com.fasterxml.jackson.databind;
     exports org.example.csis231_fall27_2;
 }

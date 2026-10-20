@@ -44,10 +44,12 @@
         <RadioButton
                 fx:id="maleRadioButton"
                 text="Male"
+                userData="MALE"
                 toggleGroup="$genderToggleGroup" />
         <RadioButton
                 fx:id="femaleRadioButton"
                 text="Female"
+                userData="FEMALE"
                 toggleGroup="$genderToggleGroup" />
     </HBox>
 

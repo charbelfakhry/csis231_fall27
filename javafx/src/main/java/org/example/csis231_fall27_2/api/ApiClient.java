@@ -14,6 +14,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -31,6 +32,13 @@ public class ApiClient {
     // ----------Auth-----------
     public static LoginResponse login(String username, String password) throws ApiException {
         return post("/auth/login", new LoginRequest(username, password), LoginResponse.class);
+    }
+
+    public static RegistrationResponse register(String username, String password, String firstName, String lastName,
+                                                String gender, LocalDate dateOfBirth) throws ApiException {
+        return post("/auth/register",
+                new RegistrationRequest(username, password, firstName, lastName, gender, dateOfBirth),
+                RegistrationResponse.class);
     }
 
     // --------Students------
@@ -77,7 +85,7 @@ public class ApiClient {
             String body = send(request);
             return mapper.readValue(body, type);
         }catch (IOException e){
-            throw new ApiException(0, "Could no read server response "+e.getMessage());
+            throw new ApiException(0, "Could not read server response: "+e.getMessage());
         }
     }
 
@@ -89,7 +97,7 @@ public class ApiClient {
             if(status >= 200 && status < 300){
                 return response.body();
             }
-            throw new ApiException(status, response.body());
+            throw new ApiException(status, extractErrorMessage(response.body(), status));
         }catch(ConnectException e){
             throw new ApiException(0, "Could not connect to server: "+e.getMessage());
         }catch(IOException e){
@@ -111,6 +119,6 @@ public class ApiClient {
 
         }
 
-        return "Server error with status code: " + status + "";
+        return "Server error with status code: " + status;
     }
 }

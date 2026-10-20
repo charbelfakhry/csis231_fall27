@@ -49,12 +49,11 @@ public class LoginController {
             }
         });
 
-        task.setOnFailed(e -> {
-            messageLabel.setText(task.getException().getMessage());
-            new Thread(task).start();
-        });
+        task.setOnFailed(e -> messageLabel.setText(task.getException().getMessage()));
 
-
+        Thread thread = new Thread(task);
+        thread.setDaemon(true); // don't keep the app alive after the window closes
+        thread.start();
     }
 
     @FXML
